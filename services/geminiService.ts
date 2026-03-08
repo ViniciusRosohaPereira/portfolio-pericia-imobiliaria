@@ -8,7 +8,7 @@ import { GoogleGenAI } from "@google/genai";
 import { PRODUCTS } from '../constants';
 
 const getSystemInstruction = (customInstruction?: string) => {
-  const productContext = PRODUCTS.map(p => 
+  const productContext = PRODUCTS.map(p =>
     `- ${p.name}: ${p.description}. Características: ${p.features.join(', ')}`
   ).join('\n');
 
@@ -26,24 +26,26 @@ const getSystemInstruction = (customInstruction?: string) => {
   return customInstruction ? `${baseInstruction}\n\n${customInstruction}` : baseInstruction;
 };
 
-export const sendMessageToGemini = async (history: {role: string, text: string}[], newMessage: string, customInstruction?: string): Promise<string> => {
+export const sendMessageToGemini = async (history: { role: string, text: string }[], newMessage: string, customInstruction?: string): Promise<string> => {
   try {
     let apiKey: string | undefined;
-    
-    // Robustly attempt to get the API key, handling ReferenceError if process is not defined
+
+    // FIXME: SECURITY RISK - Using AI tokens directly in the client application exposes them to users.
+    // This service call should be moved to a backend proxy/serverless function.
     try {
-      apiKey = process.env.API_KEY;
+      // For development ONLY. 
+      // Ensure Vite's import.meta.env or a secure backend provides this safely in production.
+      apiKey = (import.meta as any).env?.VITE_GEMINI_API_KEY as string | undefined;
     } catch (e) {
-      // process is likely not defined in this environment
-      console.warn("Accessing process.env failed");
+      console.warn("Env key not accessible directly");
     }
-    
+
     if (!apiKey) {
       return "Desculpe, não consigo me conectar ao servidor no momento. (Chave de API ausente)";
     }
 
     const ai = new GoogleGenAI({ apiKey });
-    
+
     const chat = ai.chats.create({
       model: 'gemini-2.5-flash',
       config: {

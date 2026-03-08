@@ -12,10 +12,8 @@ export default defineConfig(({ mode }) => {
       allowedHosts: true,
     },
     plugins: [react(), tailwindcss()],
-    define: {
-      'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-    },
+    // WARNING: Any environment variable defined here will be exposed to the browser.
+    // Do NOT define API_KEY or GEMINI_API_KEY here unless using a public limited proxy endpoint.
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

@@ -10,8 +10,15 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.env
+.env.*
+!.env.example
 *.local
 
+# Binaries and tooling
+ngrok.zip
+ngrok_bin/
+ngrok
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

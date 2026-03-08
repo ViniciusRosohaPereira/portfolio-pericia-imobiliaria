@@ -48,14 +48,14 @@ export const BOOKS: Book[] = [
   {
     id: 'b1',
     title: 'A Sombra do Crime',
-    image: 'https://m.media-amazon.com/images/I/71u-fP-vA+L._SY466_.jpg',
+    image: '/Sombra do crime capa.png',
     amazonUrl: 'https://www.amazon.com.br/dp/B0FH4MHCXW/',
     description: 'Uma exploração profunda sobre os mistérios e as sombras do sistema criminal.'
   },
   {
     id: 'b2',
     title: 'Insuficiência da Legislação Brasileira no Combate ao Ransomware',
-    image: 'https://m.media-amazon.com/images/I/71z+6P+QY+L._SY466_.jpg',
+    image: '/Livro insuficiência capa.png',
     amazonUrl: 'https://www.amazon.com.br/dp/B0DTD4DP29/',
     description: 'Análise crítica sobre os desafios jurídicos impostos pelos ataques cibernéticos modernos.'
   }

@@ -13,12 +13,13 @@ export interface Service {
 }
 
 export interface JournalArticle {
-  id: number;
+  id: number | string;
   title: string;
   date: string;
   excerpt: string;
   image: string;
-  content: React.ReactNode;
+  url?: string;
+  content: string | React.ReactNode;
 }
 
 export interface Book {

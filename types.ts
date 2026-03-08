@@ -1,18 +1,12 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
-*/
-
 import React from 'react';
 
-export interface Product {
+export interface Service {
   id: string;
   name: string;
   tagline: string;
   description: string;
   longDescription?: string;
-  price: number;
-  category: 'Audio' | 'Wearable' | 'Mobile' | 'Home';
+  category: 'Avaliação' | 'Perícia' | 'Consultoria';
   imageUrl: string;
   gallery?: string[];
   features: string[];
@@ -24,7 +18,7 @@ export interface JournalArticle {
   date: string;
   excerpt: string;
   image: string;
-  content: React.ReactNode; // Allowing JSX for rich formatting/poems
+  content: React.ReactNode;
 }
 
 export interface Book {
@@ -48,8 +42,7 @@ export enum LoadingState {
   SUCCESS = 'SUCCESS'
 }
 
-export type ViewState = 
+export type ViewState =
   | { type: 'home' }
-  | { type: 'product', product: Product }
-  | { type: 'journal', article: JournalArticle }
-  | { type: 'checkout' };
+  | { type: 'service', service: Service }
+  | { type: 'journal', article: JournalArticle };

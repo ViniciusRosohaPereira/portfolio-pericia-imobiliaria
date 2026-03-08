@@ -1,18 +1,10 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
-*/
-
-
 import React from 'react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="bg-[#EBE7DE]">
-
-      {/* Introduction / Story */}
-      <div className="py-24 px-6 md:px-12 max-w-[1800px] mx-auto flex flex-col md:flex-row items-start gap-16 md:gap-32">
-        <div className="md:w-1/3">
+    <section id="about" className="bg-[#EBE7DE] border-b border-[#D6D1C7]">
+      <div className="py-24 md:py-32 px-6 md:px-12 max-w-[1800px] mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-32">
+        <div className="md:w-1/3 w-full max-w-sm mx-auto">
           <div className="relative group">
             <div className="absolute -inset-4 bg-emerald-500/10 rounded-2xl transition-all group-hover:bg-emerald-500/20 animate-pulse-soft"></div>
             <img
@@ -26,7 +18,7 @@ const About: React.FC = () => {
               href="https://www.linkedin.com/in/viniciusrosohapereira/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-6 py-3 bg-[#2C2A26] text-white rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-black transition-all border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.2)] hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] animate-pulse-neon"
+              className="flex items-center justify-center gap-3 px-6 py-4 bg-[#2C2A26] text-white rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-emerald-700 transition-all border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
             >
               LinkedIn
             </a>
@@ -34,93 +26,41 @@ const About: React.FC = () => {
               href="http://lattes.cnpq.br/2202180129627682"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-6 py-3 border border-emerald-500/50 text-[#2C2A26] rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-emerald-500 hover:text-black transition-all"
+              className="flex items-center justify-center gap-3 px-6 py-4 border border-emerald-500/50 text-[#2C2A26] rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-emerald-500/10 transition-all"
             >
               Currículo Lattes
             </a>
-            <a
-              href="https://github.com/ViniciusRosohaPereira"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-6 py-3 bg-[#F5F2EB] text-[#2C2A26] rounded-lg text-sm font-bold uppercase tracking-widest border border-emerald-500/20 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] transition-all"
-            >
-              GitHub
-            </a>
           </div>
         </div>
-        <div className="md:w-2/3 max-w-2xl">
-          <h2 className="text-4xl md:text-6xl font-serif text-[#2C2A26] leading-tight mb-12">
-            Perito Avaliador de Imóveis <br /> e Assessor Técnico.
+
+        <div className="md:w-2/3 max-w-3xl">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700 mb-6 block">Sobre o Profissional</span>
+          <h2 className="text-4xl md:text-5xl font-serif text-[#2C2A26] leading-tight mb-10">
+            Inteligência Técnica. <br />Rigor Normativo.
           </h2>
-          <p className="text-lg md:text-xl text-[#5D5A53] font-light leading-relaxed mb-8 text-justify">
-            Sou profissional dedicado à integração entre Direito, Perícia Imobiliária e Tecnologia. Minha atuação é orientada pela precisão técnica, pelo rigor metodológico e pela atualização constante, buscando assegurar que cada laudo ou parecer apresentado possua sólida fundamentação jurídica e suporte analítico baseado em dados de mercado.
+          <p className="text-base sm:text-lg md:text-xl text-[#5D5A53] font-light leading-relaxed mb-8 text-justify">
+            Sou profissional dedicado à integração entre Direito, Perícia Imobiliária e Tecnologia. Minha atuação é orientada pela precisão técnica, rigor metodológico e atualização constante, buscando assegurar que cada laudo, parecer ou manifestação técnica possua sólida fundamentação normativa, coerência analítica e aderência à realidade processual e mercadológica.
           </p>
-          <p className="text-lg md:text-xl text-[#5D5A53] font-light leading-relaxed mb-8 text-justify">
-            No exercício da assessoria técnica imobiliária, aplico métodos estatísticos, análise comparativa de mercado e ferramentas de georreferenciamento para reduzir subjetividades e aproximar as avaliações da realidade dinâmica do setor imobiliário.
-          </p>
-          <p className="text-lg md:text-xl text-[#5D5A53] font-light leading-relaxed mb-12 text-justify">
-            Acredito que a tecnologia desempenha papel central na evolução da perícia moderna. Por essa razão, mantenho formação contínua em ferramentas digitais aplicadas à análise de dados, inteligência artificial, segurança da informação e registros digitais, com o objetivo de aprimorar a qualidade técnica, a rastreabilidade e a confiabilidade dos serviços prestados.
+          <p className="text-base sm:text-lg md:text-xl text-[#5D5A53] font-light leading-relaxed mb-12 text-justify">
+            No exercício da assessoria técnica e perícia, afasto conclusões empíricas sem substrato. O foco está na instrumentalização de dados consistentes e georreferenciados para traduzir a complexidade do setor imobiliário em relatórios objetivos e conclusivos que subsidiam decisões judiciais e tomadas de decisão estratégica.
           </p>
 
-          <div className="bg-[#D6D1C7]/30 p-8 md:p-12 rounded-2xl border border-[#D6D1C7]">
-            <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#5D5A53] mb-8">Certificações Tecnológicas</h4>
-            <ul className="space-y-6">
-              {[
-                { title: 'Foundations of Cybersecurity', issuer: 'Google/Coursera', year: '2026' },
-                { title: 'Introduction to AI', issuer: 'Google/Coursera', year: '2025' },
-                { title: 'Mastering Web3: Blockchain, Cryptocurrencies, NFTs, and the Metaverse', issuer: 'University of Nicosia', year: '2026' },
-                { title: 'Introdução à Inteligência Artificial e suas Aplicações', issuer: 'Escola de Gestão do Paraná', year: '2025' },
-                { title: 'Lei Geral de Proteção de Dados', issuer: 'EJUD-PR', year: '2026' }
-              ].map((cert, i) => (
-                <li key={i} className="flex justify-between items-end border-b border-[#D6D1C7] pb-4 group">
-                  <div>
-                    <span className="block text-sm font-medium text-[#2C2A26] group-hover:text-black transition-colors">{cert.title}</span>
-                    <span className="text-xs text-[#A8A29E] uppercase tracking-wider">{cert.issuer}</span>
-                  </div>
-                  <span className="text-xs font-mono text-[#A8A29E]">{cert.year}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 bg-[#D6D1C7]/30 p-8 md:p-12 rounded-2xl border border-[#D6D1C7]">
+            <div>
+              <svg className="w-8 h-8 text-emerald-600 mb-6 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+              </svg>
+              <h4 className="text-sm font-bold uppercase tracking-[0.1em] text-[#2C2A26] mb-3">Conhecimento Jurídico</h4>
+              <p className="text-sm text-[#5D5A53] font-light leading-relaxed text-justify">A formação em Direito e a vivência no Poder Judiciário garantem o domínio da liturgia processual e clareza na formulação de quesitos pertinentes à lide contratual ou desapropriatória.</p>
+            </div>
+            <div>
+              <svg className="w-8 h-8 text-emerald-600 mb-6 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              <h4 className="text-sm font-bold uppercase tracking-[0.1em] text-[#2C2A26] mb-3">Atributo Técnico</h4>
+              <p className="text-sm text-[#5D5A53] font-light leading-relaxed text-justify">CNAI e certificações complementares, orientando a atividade sob o crivo do arcabouço normativo ditado pelo ordenamento de classe e pela ABNT.</p>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Philosophy Blocks */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[80vh]">
-        <div className="order-2 lg:order-1 relative h-[500px] lg:h-auto overflow-hidden group">
-          <img
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?fm=webp&fit=crop&q=75&w=1200"
-            alt="Data Analysis"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
-          />
-        </div>
-        <div className="order-1 lg:order-2 flex flex-col justify-center p-12 lg:p-24 bg-[#D6D1C7]">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#5D5A53] mb-6">Metodologia</span>
-          <h3 className="text-4xl md:text-5xl font-serif mb-8 text-[#2C2A26] leading-tight">
-            Ciência de Dados <br /> em Avaliações.
-          </h3>
-          <p className="text-lg text-[#5D5A53] font-light leading-relaxed mb-12 max-w-md">
-            Utilizo modelos de regressão linear e análise espacial para garantir que o valor apurado reflita a realidade dinâmica do mercado, minimizando subjetividades.
-          </p>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[80vh]">
-        <div className="flex flex-col justify-center p-12 lg:p-24 bg-[#2C2A26] text-[#F5F2EB]">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#A8A29E] mb-6">Inovação</span>
-          <h3 className="text-4xl md:text-5xl font-serif mb-8 text-[#F5F2EB] leading-tight">
-            Relatórios Inteligentes.
-          </h3>
-          <p className="text-lg text-[#A8A29E] font-light leading-relaxed mb-12 max-w-md">
-            Meus laudos são digitais, interativos e fáceis de compreender. A tecnologia serve para tornar a informação complexa em insights acionáveis para investidores e proprietários.
-          </p>
-        </div>
-        <div className="relative h-[500px] lg:h-auto overflow-hidden group">
-          <img
-            src="https://images.unsplash.com/photo-1512446816042-444d641267d4?fm=webp&fit=crop&q=75&w=1200"
-            alt="Modern building detail"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105 brightness-90"
-          />
         </div>
       </div>
     </section>

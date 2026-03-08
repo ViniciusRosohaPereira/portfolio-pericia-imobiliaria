@@ -5,10 +5,10 @@
 
 
 import { GoogleGenAI } from "@google/genai";
-import { PRODUCTS } from '../constants';
+import { SERVICES } from '../constants';
 
 const getSystemInstruction = (customInstruction?: string) => {
-  const productContext = PRODUCTS.map(p =>
+  const productContext = SERVICES.map(p =>
     `- ${p.name}: ${p.description}. Características: ${p.features.join(', ')}`
   ).join('\n');
 
@@ -31,14 +31,13 @@ export const sendMessageToGemini = async (history: { role: string, text: string 
     let apiKey: string | undefined;
 
     // FIXME: SECURITY RISK - Using AI tokens directly in the client application exposes them to users.
-    // This service call should be moved to a backend proxy/serverless function.
-    try {
-      // For development ONLY. 
-      // Ensure Vite's import.meta.env or a secure backend provides this safely in production.
-      apiKey = (import.meta as any).env?.VITE_GEMINI_API_KEY as string | undefined;
-    } catch (e) {
-      console.warn("Env key not accessible directly");
-    }
+    // This service call MUST be moved to a backend proxy or serverless function.
+    // To ensure NO exposure occurs, we do not read from import.meta.env in the client.
+
+    // apiKey = import.meta.env.VITE_GEMINI_API_KEY; // <-- MOVED TO BACKEND
+
+    // Force missing API key for now to prevent any frontend execution leakage.
+    // You should create an API route (e.g., using Vercel Serverless Functions) to handle this securely.
 
     if (!apiKey) {
       return "Desculpe, não consigo me conectar ao servidor no momento. (Chave de API ausente)";

@@ -1,20 +1,42 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Portfólio Perícia Imobiliária - Vinícius Rosoha Pereira
 
-# Run and deploy your AI Studio app
+Site institucional profissional focado na atuação de Perito Avaliador de Imóveis e Assessor Técnico Imobiliário.
 
-This contains everything you need to run your app locally.
+## Descrição Profissional
+Projeto desenvolvido para apresentar a atuação técnica de **Vinícius Rosoha Pereira**, abordando a integração entre Direito, Perícia Imobiliária e Tecnologia. O foco é evidenciar precisão metodológica, segurança jurídica e suporte analítico qualificado com base em dados e georreferenciamento.
 
-View your app in AI Studio: https://ai.studio/apps/a0e4f963-1b9b-454e-acf2-a74553762be6
+## Stack Utilizada
+- **Front-end:** React + Vite
+- **Estilização:** Tailwind CSS
+- **Ícones:** Lucide React
+- **Linguagem:** TypeScript
+- **Integração IA:** Google Gen AI SDK (Gemini) - Implementação opcional de Assistente Virtual
 
-## Run Locally
+## Execução Local (Desenvolvimento)
+1. Instale as dependências executando na raiz do projeto:
+   ```bash
+   npm install
+   ```
+2. Adicione sua chave de API opcional no `.env.local` usando o `.env.example` como base.
+3. Inicie o servidor de testes local (Vite irá rodar em `http://localhost:3000` ou similar):
+   ```bash
+   npm run dev
+   ```
 
-**Prerequisites:**  Node.js
+## Build para Produção
+Gera os arquivos estáticos otimizados que devem ser hospedados em qualquer CDN ou servidor estático.
+```bash
+npm run build
+```
+O resultado otimizado estará dentro da pasta `/dist`.
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Deploy (Vercel)
+Este projeto está estruturado para ter Continuous Deployment via Vercel com GitHub.
+1. Conecte sua conta do GitHub ao Vercel.
+2. Crie um novo projeto no Vercel importando este repositório.
+3. Configuração (Autodetectado):
+   - **Framework:** Vite
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+4. Na aba **Environment Variables**, não se esqueça de adicionar a variável de produção `VITE_GEMINI_API_KEY` (se for usar o serviço do geminiService em produção e possuir backend seguro ou não ligar de expor).
+5. Clique em Deploy. Todo novo push na branch `main` atualizará o sistema automaticamente.

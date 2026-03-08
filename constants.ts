@@ -61,7 +61,32 @@ export const BOOKS: Book[] = [
   }
 ];
 
-export const JOURNAL_ARTICLES: JournalArticle[] = [];
+export const JOURNAL_ARTICLES: JournalArticle[] = [
+  {
+    id: 1,
+    title: 'O Papel do Perito Avaliador em Disputas Societárias',
+    date: '10 de Janeiro, 2026',
+    excerpt: 'Análise metodológica da valoração de ativos imobiliários em processos de dissolução de sociedade e apuração de haveres.',
+    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=1000',
+    content: React.createElement('p', { className: 'text-justify' }, 'Em disputas societárias, a avaliação patrimonial imobiliária reveste-se de complexidade ímpar e demanda técnica apurada, pois os ativos físicos frequentemente correspondem a parcela significativa do valor do negócio jurídico. A imperícia na delimitação do valor de mercado pode incorrer em grave distorção contábil, prejudicando os haveres dos sócios retirantes ou remanescentes.')
+  },
+  {
+    id: 2,
+    title: 'A Aplicação da Inferência Estatística na Engenharia de Avaliações',
+    date: '22 de Novembro, 2025',
+    excerpt: 'Um olhar técnico sobre o uso de regressão linear múltipla na determinação de valor pelo Método Comparativo Direto de Dados de Mercado.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000',
+    content: React.createElement('p', { className: 'text-justify' }, 'A inferência estatística mitigou fortemente a subjetividade na engenharia de avaliações. Conforme estabelece o corpo diretivo da Norma Brasileira (ABNT NBR 14.653), deve-se perseguir sempre o maior rigor científico no saneamento e modelagem da amostra paradigma, a fim de expurgar dados discrepantes, estabelecer correlações significativas entre as variáveis independentes e a variável dependente.')
+  },
+  {
+    id: 3,
+    title: 'Crise de Confiança e Segurança em Contratos Inteligentes (Smart Contracts)',
+    date: '05 de Setembro, 2025',
+    excerpt: 'Desafios jurídicos e tecnológicos na instrumentalização imobiliária no ambiente Web3.',
+    image: 'https://images.unsplash.com/photo-1639762681485-074b7f4ec651?auto=format&fit=crop&q=80&w=1000',
+    content: React.createElement('p', { className: 'text-justify' }, 'No ecossistema imobiliário contemporâneo, alavancado por transações automatizadas (Smart Contracts), o arcabouço normativo se depara com o desafio da irreversibilidade dos códigos executados. A segurança imposta pelo modelo descentralizado esbarra, por vezes, em vulnerabilidades a nível de código-fonte que, se exploradas, acarretam danos patrimoniais irreparáveis ante ao anonimato dos vetores de ameaça.')
+  }
+];
 
 export const BRAND_NAME = 'Vinícius Rosoha Pereira';
 export const PRIMARY_COLOR = 'stone-900';

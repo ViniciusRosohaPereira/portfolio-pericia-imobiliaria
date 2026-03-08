@@ -8,7 +8,10 @@ import Technology from './components/Technology';
 import Assistant from './components/Assistant';
 import Footer from './components/Footer';
 import ServiceDetail from './components/ServiceDetail';
-import { Service, ViewState } from './types';
+import BooksGrid from './components/BooksGrid';
+import JournalGrid from './components/JournalGrid';
+import JournalDetail from './components/JournalDetail';
+import { Service, JournalArticle, ViewState } from './types';
 
 function App() {
   const [view, setView] = useState<ViewState>({ type: 'home' });
@@ -63,6 +66,11 @@ function App() {
               window.scrollTo({ top: 0, behavior: 'smooth' });
               setView({ type: 'service', service: s });
             }} />
+            <BooksGrid />
+            <JournalGrid onArticleClick={(a) => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setView({ type: 'journal', article: a });
+            }} />
           </>
         )}
 
@@ -72,6 +80,16 @@ function App() {
             onBack={() => {
               setView({ type: 'home' });
               setTimeout(() => scrollToSection('services'), 50);
+            }}
+          />
+        )}
+
+        {view.type === 'journal' && view.article && (
+          <JournalDetail
+            article={view.article}
+            onBack={() => {
+              setView({ type: 'home' });
+              setTimeout(() => scrollToSection('articles'), 50);
             }}
           />
         )}

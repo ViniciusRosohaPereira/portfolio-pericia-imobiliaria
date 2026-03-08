@@ -50,9 +50,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
 
           <div className={`hidden md:flex items-center gap-10 text-xs font-bold tracking-widest uppercase transition-colors duration-500 ${textColorClass}`}>
             <a href="#about" onClick={(e) => handleLinkClick(e, 'about')} className="hover:text-emerald-500 transition-colors">Sobre</a>
-            <a href="#methodology" onClick={(e) => handleLinkClick(e, 'methodology')} className="hover:text-emerald-500 transition-colors">Metodologia</a>
-            <a href="#technology" onClick={(e) => handleLinkClick(e, 'technology')} className="hover:text-emerald-500 transition-colors">Tecnologia</a>
             <a href="#services" onClick={(e) => handleLinkClick(e, 'services')} className="hover:text-emerald-500 transition-colors">Serviços</a>
+            <a href="#publications" onClick={(e) => handleLinkClick(e, 'publications')} className="hover:text-emerald-500 transition-colors">Publicações</a>
+            <a href="#articles" onClick={(e) => handleLinkClick(e, 'articles')} className="hover:text-emerald-500 transition-colors">Artigos</a>
           </div>
 
           <div className={`flex items-center gap-6 z-50 relative transition-colors duration-500 ${textColorClass}`}>
@@ -86,9 +86,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
         }`}>
         <div className="flex flex-col items-center space-y-8 text-xl font-serif font-medium text-[#2C2A26]">
           <a href="#about" onClick={(e) => handleLinkClick(e, 'about')} className="hover:text-emerald-600 transition-colors">Sobre</a>
-          <a href="#methodology" onClick={(e) => handleLinkClick(e, 'methodology')} className="hover:text-emerald-600 transition-colors">Metodologia</a>
-          <a href="#technology" onClick={(e) => handleLinkClick(e, 'technology')} className="hover:text-emerald-600 transition-colors">Tecnologia</a>
           <a href="#services" onClick={(e) => handleLinkClick(e, 'services')} className="hover:text-emerald-600 transition-colors">Serviços</a>
+          <a href="#publications" onClick={(e) => handleLinkClick(e, 'publications')} className="hover:text-emerald-600 transition-colors">Publicações</a>
+          <a href="#articles" onClick={(e) => handleLinkClick(e, 'articles')} className="hover:text-emerald-600 transition-colors">Artigos</a>
           <a
             href="#contact"
             onClick={(e) => handleLinkClick(e, 'contact')}

@@ -70,12 +70,12 @@ const JournalGrid: React.FC<JournalGridProps> = ({ onArticleClick }) => {
             if (!isHovered && !isInteracting && scrollContainerRef.current) {
                 const container = scrollContainerRef.current;
 
-                // If we reach the bottom, we shouldn't force scroll anymore unless more items load
-                const isAtBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + 2;
+                // Check if we reach the extreme right
+                const isAtEnd = container.scrollWidth - container.scrollLeft <= container.clientWidth + 2;
 
-                if (!isAtBottom) {
-                    // Scroll at approx 30px per second -> 0.03px per ms
-                    container.scrollTop += 0.035 * deltaTime;
+                if (!isAtEnd) {
+                    // Scroll horizontally approx 30px per second -> 0.045px per ms
+                    container.scrollLeft += 0.045 * deltaTime;
                 }
             }
 
@@ -172,8 +172,8 @@ const JournalGrid: React.FC<JournalGridProps> = ({ onArticleClick }) => {
     const hasReachedEnd = !hasMoreAPI && visibleArticles.length === allArticles.length && allArticles.length > 0;
 
     return (
-        <section id="articles" className="py-24 md:py-32 px-6 md:px-12 bg-[#F5F2EB] border-t border-[#D6D1C7]/30">
-            <div className="max-w-[1800px] mx-auto flex flex-col items-center">
+        <section id="articles" className="py-24 md:py-32 bg-[#F5F2EB] border-t border-[#D6D1C7]/30 overflow-hidden">
+            <div className="max-w-[1800px] mx-auto flex flex-col items-center px-6 md:px-12">
                 <div className="flex flex-col items-center text-center mb-16 space-y-6">
                     <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#5D5A53] mb-2 border-b border-emerald-500 pb-2">Artigos Técnicos</span>
                     <h2 className="text-4xl md:text-5xl font-serif text-[#2C2A26] leading-tight">Artigos e Análises</h2>
@@ -191,8 +191,8 @@ const JournalGrid: React.FC<JournalGridProps> = ({ onArticleClick }) => {
                         </div>
                     </div>
                 ) : (
-                    <div className="w-full max-w-5xl relative">
-                        {/* Feed Container */}
+                    <div className="w-full w-screen relative -ml-6 md:-ml-12 pl-6 md:pl-12">
+                        {/* Feed Container Horizontal */}
                         <div
                             ref={scrollContainerRef}
                             onMouseEnter={() => setIsHovered(true)}
@@ -201,57 +201,54 @@ const JournalGrid: React.FC<JournalGridProps> = ({ onArticleClick }) => {
                             onTouchStart={handleUserInteraction}
                             onTouchMove={handleUserInteraction}
                             onWheel={handleUserInteraction}
-                            className="max-h-[800px] overflow-y-auto pr-2 md:pr-4 custom-scrollbar"
+                            className="flex overflow-x-auto overflow-y-hidden gap-6 lg:gap-10 transition-all duration-700 pb-16 pt-6 custom-scrollbar scroll-smooth"
                             style={{
-                                maskImage: 'linear-gradient(to bottom, transparent, black 2%, black 98%, transparent 100%)',
-                                WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 2%, black 98%, transparent 100%)',
-                                paddingBottom: '20px'
+                                maskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+                                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)'
                             }}
                         >
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 transition-all duration-700 pt-6 pb-20">
-                                {visibleArticles.map((article, index) => {
-                                    const isLastElement = visibleArticles.length === index + 1;
-                                    return (
-                                        <div
-                                            key={article.id}
-                                            ref={isLastElement ? lastElementRef : null}
-                                            onClick={() => {
-                                                if (article.url) window.open(article.url, "_blank");
-                                                else onArticleClick(article);
-                                            }}
-                                            className="group cursor-pointer flex flex-col items-center border border-[#D6D1C7]/50 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-white animate-fade-in-up"
-                                        >
-                                            <div className="w-full relative aspect-[4/3] md:aspect-video overflow-hidden bg-[#2C2A26]">
-                                                <img
-                                                    src={article.image}
-                                                    alt={article.title}
-                                                    className="absolute inset-0 w-full h-full object-cover grayscale opacity-90 transition-transform duration-[1500ms] group-hover:scale-105 group-hover:grayscale-0"
-                                                />
-                                            </div>
-
-                                            <div className="p-6 md:p-8 w-full flex flex-col flex-1 bg-white">
-                                                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#A8A29E] mb-4">
-                                                    {article.date}
-                                                </span>
-                                                <h3 className="text-xl font-serif text-[#2C2A26] mb-3 leading-normal group-hover:text-emerald-700 transition-colors">
-                                                    {article.title}
-                                                </h3>
-                                                <p className="text-[#5D5A53] text-[13px] font-light text-justify leading-relaxed mb-8 flex-1">
-                                                    {article.excerpt}
-                                                </p>
-
-                                                <span className="self-start text-[10px] font-bold uppercase tracking-[0.2em] text-[#2C2A26] border-b border-[#2C2A26] pb-1 opacity-60 group-hover:opacity-100 group-hover:border-emerald-700 transition-all">
-                                                    Ler Artigo
-                                                </span>
-                                            </div>
+                            {visibleArticles.map((article, index) => {
+                                const isLastElement = visibleArticles.length === index + 1;
+                                return (
+                                    <div
+                                        key={article.id}
+                                        ref={isLastElement ? lastElementRef : null}
+                                        onClick={() => {
+                                            if (article.url) window.open(article.url, "_blank");
+                                            else onArticleClick(article);
+                                        }}
+                                        className="w-[280px] md:w-[380px] shrink-0 group cursor-pointer flex flex-col items-center border border-[#D6D1C7]/50 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-white animate-fade-in-up"
+                                    >
+                                        <div className="w-full relative aspect-[4/3] md:aspect-video overflow-hidden bg-[#2C2A26]">
+                                            <img
+                                                src={article.image}
+                                                alt={article.title}
+                                                className="absolute inset-0 w-full h-full object-cover grayscale opacity-90 transition-transform duration-[1500ms] group-hover:scale-105 group-hover:grayscale-0 pointer-events-none"
+                                            />
                                         </div>
-                                    );
-                                })}
-                            </div>
 
-                            {/* Loader Discreto de Base (Scroll Loading ou API Parsing) */}
+                                        <div className="p-6 md:p-8 w-full flex flex-col flex-1 bg-white">
+                                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#A8A29E] mb-4">
+                                                {article.date}
+                                            </span>
+                                            <h3 className="text-xl font-serif text-[#2C2A26] mb-3 leading-normal group-hover:text-emerald-700 transition-colors line-clamp-3">
+                                                {article.title}
+                                            </h3>
+                                            <p className="text-[#5D5A53] text-[13px] font-light text-justify leading-relaxed mb-8 flex-1 line-clamp-4">
+                                                {article.excerpt}
+                                            </p>
+
+                                            <span className="self-start text-[10px] font-bold uppercase tracking-[0.2em] text-[#2C2A26] border-b border-[#2C2A26] pb-1 opacity-60 group-hover:opacity-100 group-hover:border-emerald-700 transition-all">
+                                                Ler Artigo
+                                            </span>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+
+                            {/* Loader Discreto no fim do Feed Horizontal */}
                             {(scrollingMore || fetchingMore) && !initialLoading && (
-                                <div className="w-full flex justify-center mt-2 pb-16 fade-in">
+                                <div className="flex h-[400px] w-[100px] shrink-0 items-center justify-center fade-in">
                                     <div className="flex gap-2">
                                         <div className="w-2 h-2 rounded-full bg-[#A8A29E] animate-pulse"></div>
                                         <div className="w-2 h-2 rounded-full bg-[#A8A29E] animate-pulse" style={{ animationDelay: '0.2s' }}></div>
@@ -260,30 +257,15 @@ const JournalGrid: React.FC<JournalGridProps> = ({ onArticleClick }) => {
                                 </div>
                             )}
 
-                            {/* Mensagem Institucional de Esgotamento de Leitura */}
+                            {/* Fim da lista no eixo horizontal */}
                             {hasReachedEnd && (
-                                <div className="w-full text-center fade-in border-t border-[#D6D1C7]/50 pt-10 pb-16 mx-auto max-w-sm">
-                                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#A8A29E]">Fim da lista</span>
-                                    <p className="text-[#5D5A53] font-serif text-lg italic mt-4">
-                                        Você chegou ao fim dos artigos.
-                                    </p>
-                                </div>
-                            )}
-
-                            {/* Estado Crítico de API Caída ou Falta de rede, sem posts em memória  */}
-                            {error && allArticles.length === 0 && (
-                                <div className="w-full text-center py-12 flex flex-col items-center gap-6">
-                                    <p className="text-[#5D5A53] font-light text-lg italic max-w-lg">
-                                        Os artigos não puderam ser carregados no momento. Acesse diretamente o blog.
-                                    </p>
-                                    <a
-                                        href="https://entrelinhasvrp.wordpress.com/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="px-8 py-3 bg-[#EBE7DE] text-[#2C2A26] border border-[#D6D1C7] rounded-full text-xs font-bold tracking-widest uppercase hover:bg-emerald-700 hover:text-white transition-colors"
-                                    >
-                                        Entre Linhas
-                                    </a>
+                                <div className="flex h-[400px] shrink-0 items-center justify-center fade-in px-8">
+                                    <div className="border-l border-[#D6D1C7]/50 pl-8 flex flex-col justify-center h-full">
+                                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#A8A29E]">Fim da lista</span>
+                                        <p className="text-[#5D5A53] font-serif text-base italic mt-4 max-w-[150px]">
+                                            Você chegou ao fim dos artigos.
+                                        </p>
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -293,14 +275,17 @@ const JournalGrid: React.FC<JournalGridProps> = ({ onArticleClick }) => {
 
             <style>{`
                 .custom-scrollbar::-webkit-scrollbar {
-                    width: 6px;
+                    height: 6px;
                 }
                 .custom-scrollbar::-webkit-scrollbar-track {
-                    background: transparent;
+                    background: transparent; /* Pista invisível */
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background-color: #D6D1C7;
+                    background-color: rgba(214, 209, 199, 0.4);
                     border-radius: 10px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background-color: rgba(214, 209, 199, 0.8);
                 }
             `}</style>
         </section>

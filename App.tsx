@@ -1,25 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ServiceGrid from './components/ServiceGrid';
 import About from './components/About';
+import ServiceGrid from './components/ServiceGrid';
 import Methodology from './components/Methodology';
-import Technology from './components/Technology';
-import Assistant from './components/Assistant';
+import PropertyListings from './components/PropertyListings';
+import SocialConnect from './components/SocialConnect';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ServiceDetail from './components/ServiceDetail';
-import BooksGrid from './components/BooksGrid';
-import JournalGrid from './components/JournalGrid';
-import JournalDetail from './components/JournalDetail';
-import { Service, JournalArticle, ViewState } from './types';
+import MapEmbed from './components/MapEmbed';
+import { Service, ViewState } from './types';
 
 function App() {
   const [view, setView] = useState<ViewState>({ type: 'home' });
 
-  // Handle navigation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    const fadeSections = document.querySelectorAll('.fade-section');
+    fadeSections.forEach((section) => observer.observe(section));
+
+    return () => {
+      fadeSections.forEach((section) => observer.unobserve(section));
+    };
+  }, [view]);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
-
     if (view.type !== 'home') {
       setView({ type: 'home' });
       setTimeout(() => scrollToSection(targetId), 0);
@@ -33,48 +50,47 @@ function App() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-
     const element = document.getElementById(targetId);
     if (element) {
-      const headerOffset = 85;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-
+      const headerOffset = 90;
+      const offsetPosition = element.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
       try {
         window.history.pushState(null, '', `#${targetId}`);
-      } catch (err) { }
+      } catch {
+        /* noop */
+      }
     }
   };
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden bg-[#F5F2EB] font-sans text-[#2C2A26] selection:bg-[#D6D1C7] selection:text-[#2C2A26]">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-bg font-body text-text-base">
       <Navbar onNavClick={handleNavClick} />
 
       <main>
         {view.type === 'home' && (
           <>
-            <Hero />
+            <Hero onNavClick={handleNavClick} />
             <About />
+            <ServiceGrid
+              onServiceClick={(s) => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setView({ type: 'service', service: s });
+              }}
+            />
             <Methodology />
-            <Technology />
-            <ServiceGrid onServiceClick={(s) => {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-              setView({ type: 'service', service: s });
-            }} />
-            <BooksGrid />
-            <JournalGrid onArticleClick={(a) => {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-              setView({ type: 'journal', article: a });
-            }} />
+            <PropertyListings />
+            <section className="fade-section border-t border-line bg-[#0a0a0a] px-6 py-20 md:px-12">
+              <div className="mx-auto max-w-[1600px]">
+                <MapEmbed />
+              </div>
+            </section>
+            <SocialConnect />
+            <Contact />
           </>
         )}
 
-        {view.type === 'service' && view.service && (
+        {view.type === 'service' && (
           <ServiceDetail
             service={view.service}
             onBack={() => {
@@ -83,21 +99,9 @@ function App() {
             }}
           />
         )}
-
-        {view.type === 'journal' && view.article && (
-          <JournalDetail
-            article={view.article}
-            onBack={() => {
-              setView({ type: 'home' });
-              setTimeout(() => scrollToSection('articles'), 50);
-            }}
-          />
-        )}
       </main>
 
       <Footer onLinkClick={handleNavClick} />
-
-      <Assistant />
     </div>
   );
 }

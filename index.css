@@ -1,94 +1,194 @@
 @import "tailwindcss";
 
+/* ============================================================
+   VINÍCIUS ROSOHA PEREIRA — PERÍCIAS E CONSULTORIA IMOBILIÁRIA
+   DESIGN TOKENS (paleta clara institucional)
+   ============================================================ */
+:root {
+  --color-bg: #f5f3ef;
+  --color-surface: #fdfcfa;
+  --color-surface-2: #ede9e1;
+  --color-surface-offset: #e2ddd4;
+  --color-border: rgba(45, 45, 45, 0.12);
+  --color-text: #1a1a18;
+  --color-text-muted: #4a4a45;
+  --color-text-faint: #8a8780;
+  --color-primary: #162d4a;
+  --color-accent: #c08a28;
+  --color-accent-hover: #a87522;
+  --color-accent-dim: rgba(192, 138, 40, 0.14);
+  --color-moss: #4a6741;          /* verde-musgo (badges/status) */
+  --color-cream: #1e3a5f;         /* títulos em azul-ardósia */
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'Inter', sans-serif;
+  --text-hero: clamp(3.5rem, 1rem + 8vw, 9rem);
+  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --transition: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mapeia tokens no tema do Tailwind para gerar utilitários
+   (bg-bg / text-accent / border-line / font-display / font-sans). */
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", serif;
+  --color-bg: #f5f3ef;
+  --color-surface: #fdfcfa;
+  --color-surface-2: #ede9e1;
+  --color-surface-offset: #e2ddd4;
+  --color-line: rgba(45, 45, 45, 0.12);
+  --color-text-base: #1a1a18;
+  --color-text-muted: #4a4a45;
+  --color-text-faint: #8a8780;
+  --color-primary: #162d4a;
+  --color-accent: #c08a28;
+  --color-accent-hover: #a87522;
+  --color-accent-dim: rgba(192, 138, 40, 0.14);
+  --color-moss: #4a6741;
+  --color-cream: #1e3a5f;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+
+  --text-hero: clamp(3.5rem, 1rem + 8vw, 9rem);
+  --text-fluid-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --text-fluid-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  --text-fluid-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --text-fluid-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-fluid-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-fluid-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 90px;
   }
 
   body {
-    font-family: var(--font-sans);
-    background-color: #F5F2EB;
-    color: #2C2A26;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-bg);
+    color: var(--color-text);
   }
 
-  p {
-    text-align: justify;
+  ::selection {
+    background: var(--color-accent);
+    color: #ffffff;
   }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--color-surface-offset); border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-accent-dim); }
 }
 
-@keyframes pulse-neon {
-  0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
-  50% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.6); }
+/* ============================================================
+   LIQUID GLASS
+   ============================================================ */
+.liquid-glass {
+  background: rgba(0, 0, 0, 0.4);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 20%,
+    rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.1) 80%, rgba(255,255,255,0.3) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
-@keyframes pulse-soft {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.02); opacity: 0.9; }
+/* ============================================================
+   UTILITIES & EFFECTS
+   ============================================================ */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.text-balance { text-wrap: balance; }
+
+.gold-gradient-text {
+  background: linear-gradient(120deg, var(--color-accent) 0%, var(--color-accent-hover) 50%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-@keyframes marquee-vertical {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-50%); }
-}
-
-.animate-marquee-vertical {
-  animation: marquee-vertical 45s linear infinite;
-}
-
-.pause-on-hover:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes focus-blur {
-  0%, 100% { filter: blur(0px) brightness(1); transform: scale(1); }
-  50% { filter: blur(8px) brightness(0.8); transform: scale(1.05); }
-}
-
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
 @keyframes fade-in-up {
   0% { opacity: 0; transform: translateY(30px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 @keyframes slide-up-fade {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-
-.animate-slide-up-fade {
-  animation: slide-up-fade 0.4s ease-out forwards;
+@keyframes draw-line {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 24px rgba(201, 151, 58, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(201, 151, 58, 0.35); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+.animate-fade-in-up { animation: fade-in-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-fade-in { animation: fade-in 1.2s ease forwards; }
+.animate-slide-up-fade { animation: slide-up-fade 0.4s ease-out forwards; }
+.animate-pulse-glow { animation: pulse-glow 3.5s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.typewriter-cursor { animation: blink 0.8s step-end infinite; }
+
+/* ============================================================
+   NEW UTILITIES (FADE & NEON HOVER)
+   ============================================================ */
+.fade-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.animate-pulse-neon {
-  animation: pulse-neon 3s ease-in-out infinite;
+.card-neon {
+  transition: box-shadow 300ms ease, border-color 300ms ease;
 }
-
-.animate-pulse-soft {
-  animation: pulse-soft 4s ease-in-out infinite;
-}
-
-.animate-marquee {
-  animation: marquee 40s linear infinite;
-}
-
-.animate-focus-blur {
-  animation: focus-blur 15s ease-in-out infinite;
-}
-
-.text-justify {
-  text-align: justify;
+.card-neon:hover {
+  box-shadow:
+    0 0 8px #C9973A,
+    0 0 20px #C9973A88,
+    0 0 40px #C9973A44;
+  border-color: #C9973A;
 }

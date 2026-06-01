@@ -3,41 +3,55 @@ import { Service } from '../types';
 
 interface ServiceCardProps {
   service: Service;
+  index: number;
   onClick: (service: Service) => void;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service, onClick }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, onClick }) => {
   return (
-    <div
-      className="group cursor-pointer flex flex-col items-center text-center"
+    <button
+      type="button"
       onClick={() => onClick(service)}
+      className="card-neon group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-line bg-surface text-left shadow-sm transition-all duration-500 hover:border-accent/40 hover:shadow-md"
     >
-      <div className="w-full relative aspect-[4/5] overflow-hidden mb-8 bg-[#EBE7DE] rounded-xl shadow-lg border border-[#D6D1C7]/30">
+      <div className="relative aspect-[16/10] w-full overflow-hidden">
         <img
           src={service.imageUrl}
           alt={service.name}
-          className="absolute inset-0 w-full h-full object-cover grayscale opacity-90 transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-[#2C2A26]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        <span className="absolute left-5 top-5 font-display text-3xl text-white drop-shadow">
+          {String(index + 1).padStart(2, '0')}
+        </span>
       </div>
-      <h3 className="text-xl font-serif mb-3 text-[#2C2A26] tracking-wide">
-        {service.name}
-      </h3>
-      <p className="text-[#A8A29E] text-xs font-medium uppercase tracking-[0.2em] mb-4">
-        {service.category}
-      </p>
-      <p className="text-[#5D5A53] text-[13px] font-light leading-relaxed mb-6 italic text-justify group-hover:text-emerald-700 transition-colors">
-        "{service.tagline}"
-      </p>
-      <div className="flex gap-2 justify-center flex-wrap mb-6">
-        {service.features.map((feature, idx) => (
-          <span key={idx} className="text-[10px] uppercase font-bold text-white bg-[#5D5A53] px-3 py-1 rounded-full">{feature}</span>
-        ))}
+
+      <div className="flex flex-1 flex-col p-7">
+        <span className="mb-3 text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent">
+          {service.category}
+        </span>
+        <h3 className="font-display text-fluid-xl text-primary">{service.name}</h3>
+        <p className="mt-3 text-sm font-light leading-relaxed text-text-muted">
+          {service.tagline}
+        </p>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {service.features.map((f) => (
+            <span
+              key={f}
+              className="rounded-full border border-line px-3 py-1 text-[0.6rem] uppercase tracking-[0.14em] text-text-muted"
+            >
+              {f}
+            </span>
+          ))}
+        </div>
+
+        <span className="mt-auto inline-flex items-center gap-2 pt-7 text-[0.7rem] font-bold uppercase tracking-[0.2em] text-text-base transition-colors group-hover:text-accent">
+          Ver detalhes
+          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </span>
       </div>
-      <button className="text-xs font-bold uppercase tracking-[0.2em] text-[#2C2A26] border-b border-[#2C2A26] pb-1 opacity-60 group-hover:opacity-100 transition-opacity">
-        Detalhes do Serviço
-      </button>
-    </div>
+    </button>
   );
 };
 

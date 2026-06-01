@@ -1,42 +1,71 @@
 import React from 'react';
 
-const Methodology: React.FC = () => {
-    return (
-        <section id="methodology" className="bg-[#EBE7DE] py-24 md:py-32 px-6 md:px-12">
-            <div className="max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center min-h-[70vh]">
-                <div className="order-2 lg:order-1 relative h-[400px] lg:h-full min-h-[500px] overflow-hidden rounded-xl shadow-2xl">
-                    <img
-                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?fm=webp&fit=crop&q=75&w=1200"
-                        alt="Análise de Dados e Metodologia"
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] hover:scale-105"
-                    />
-                </div>
-                <div className="order-1 lg:order-2 flex flex-col justify-center">
-                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#A8A29E] mb-6">Prática Normatizada</span>
-                    <h3 className="text-4xl md:text-5xl font-serif mb-8 text-[#2C2A26] leading-tight">
-                        Metodologia Científica <br className="hidden md:block" /> na Avaliação de Imóveis.
-                    </h3>
-                    <p className="text-lg md:text-xl text-[#5D5A53] font-light leading-relaxed mb-8 text-justify">
-                        Os trabalhos são desenvolvidos com base em critérios técnicos estritos, compatíveis com a avaliação imobiliária profissional conforme as diretrizes da ABNT.
-                    </p>
-                    <p className="text-lg text-[#5D5A53] font-light leading-relaxed mb-12 text-justify">
-                        A prática envolve minuciosa análise comparativa de mercado, tratamento de dados qualificados, observação in loco das características do imóvel e exame de todos os fatores exógenos e endógenos que influenciam na efetiva formação do valor.
-                    </p>
+const STEPS = [
+  {
+    title: 'Recebimento do Caso',
+    detail: 'Análise da demanda, documentação e objetivo da avaliação ou perícia.',
+  },
+  {
+    title: 'Pesquisa de Mercado',
+    detail: 'Coleta de dados comparáveis, georreferenciamento e saneamento da amostra.',
+  },
+  {
+    title: 'Modelo Estatístico',
+    detail: 'Tratamento por regressão linear e inferência para mitigar subjetividades.',
+  },
+  {
+    title: 'Laudo ABNT NBR 14653',
+    detail: 'Elaboração técnica conforme a norma, com fundamentação e grau de precisão.',
+  },
+  {
+    title: 'Entrega do Documento Digital',
+    detail: 'Laudo assinado e seguro, com rastreabilidade e clareza nas conclusões.',
+  },
+];
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8 border-t border-[#D6D1C7]">
-                        <div>
-                            <h4 className="text-[#2C2A26] font-bold text-sm uppercase tracking-widest mb-3">Rigor Estatístico</h4>
-                            <p className="text-[#5D5A53] text-sm font-light text-justify">Adoção de métodos quantitativos, com inferência estatística, quando apropriado, visando minorar subjetividades.</p>
-                        </div>
-                        <div>
-                            <h4 className="text-[#2C2A26] font-bold text-sm uppercase tracking-widest mb-3">Isenção Pericial</h4>
-                            <p className="text-[#5D5A53] text-sm font-light text-justify">Atuação pautada pela estrita imparcialidade enquanto Perito do Juízo, e contundência normativa como Assistente Técnico.</p>
-                        </div>
-                    </div>
-                </div>
+const Methodology: React.FC = () => {
+  return (
+    <section id="methodology" className="fade-section border-t border-line bg-bg py-24 md:py-36">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-12">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-24">
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-32">
+              <span className="mb-4 block font-body text-xs font-semibold uppercase tracking-[0.3em] text-accent text-center lg:text-left">
+                Metodologia
+              </span>
+              <h2 className="font-display text-fluid-2xl font-medium leading-tight text-cream text-center lg:text-left">
+                Do recebimento do caso ao laudo digital.
+              </h2>
+              <p className="mt-6 font-body text-fluid-base font-light text-text-muted text-center lg:text-left">
+                Um processo normatizado e auditável, conduzido com rigor científico em cada etapa.
+              </p>
             </div>
-        </section>
-    );
+          </div>
+
+          <div className="lg:col-span-8">
+            <ol className="relative ml-5">
+              {/* Linha vertical animada */}
+              <div className="absolute -left-[1px] top-3 bottom-3 w-px origin-top animate-[draw-line_1.6s_cubic-bezier(0.16,1,0.3,1)_forwards] bg-gradient-to-b from-accent via-accent/40 to-transparent" />
+
+              {STEPS.map((step, i) => (
+                <li key={step.title} className="relative pb-12 pl-10 last:pb-0">
+                  <span className="absolute -left-5 top-0 flex h-10 w-10 items-center justify-center rounded-full border border-accent/40 bg-surface font-display text-lg text-accent">
+                    {i + 1}
+                  </span>
+                  <div className="rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-accent/30 hover:bg-surface-2">
+                    <h3 className="font-display text-fluid-lg text-cream">{step.title}</h3>
+                    <p className="mt-2 font-body text-sm font-light leading-relaxed text-text-muted">
+                      {step.detail}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Methodology;

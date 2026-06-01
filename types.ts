@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface Service {
   id: string;
   name: string;
@@ -12,22 +10,28 @@ export interface Service {
   features: string[];
 }
 
-export interface JournalArticle {
-  id: number | string;
-  title: string;
-  date: string;
-  excerpt: string;
-  image: string;
-  url?: string;
-  content: string | React.ReactNode;
-}
+export type PropertyStatus = 'Venda' | 'Locação';
+export type PropertyType =
+  | 'Casa'
+  | 'Apartamento'
+  | 'Terreno'
+  | 'Rural'
+  | 'Comercial';
 
-export interface Book {
+export interface Property {
   id: string;
   title: string;
+  type: PropertyType;
+  status: PropertyStatus;
+  location: string;
+  area: string;
+  bedrooms?: number;
+  bathrooms?: number;
+  parking?: number;
+  price: string;
   image: string;
-  amazonUrl: string;
-  description: string;
+  featured?: boolean;
+  description?: string;
 }
 
 export interface ChatMessage {
@@ -45,5 +49,4 @@ export enum LoadingState {
 
 export type ViewState =
   | { type: 'home' }
-  | { type: 'service', service: Service }
-  | { type: 'journal', article: JournalArticle };
+  | { type: 'service'; service: Service };

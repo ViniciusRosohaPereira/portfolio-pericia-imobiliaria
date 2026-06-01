@@ -25,7 +25,7 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
         <div className="lg:grid lg:grid-cols-12 lg:items-end lg:gap-8">
           {/* Coluna esquerda */}
           <div className="lg:col-span-8 text-left items-start flex flex-col justify-center">
-            <h1 className="mb-3 font-normal text-white text-[4.5vw] sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl tracking-[-0.03em] whitespace-nowrap overflow-hidden w-full">
+            <h1 className="mb-3 font-normal text-white text-[4.5vw] sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl tracking-[-0.03em] whitespace-nowrap overflow-hidden max-w-full">
               <TypewriterText 
                 text="Aliando rigor técnico à expertise jurídica."
                 speed={45}
@@ -33,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
               />
             </h1>
             
-            <p className="mb-4 text-[3.5vw] sm:text-sm md:text-base lg:text-lg italic text-[#C9973A] whitespace-nowrap overflow-hidden w-full">
+            <p className="mb-4 text-xs sm:text-sm md:text-base lg:text-lg italic text-[#C9973A] whitespace-nowrap overflow-hidden max-w-full">
               <TypewriterText 
                 text="Precisão que protege. Imparcialidade que valoriza."
                 speed={35}
@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
               />
             </p>
 
-            <p className="mb-6 text-sm md:text-base text-gray-200 max-w-lg text-left min-h-[80px]">
+            <p className="mb-6 text-xs sm:text-sm md:text-base text-gray-200 max-w-lg text-left min-h-[80px]">
               <TypewriterText 
                 text="Avaliações imobiliárias, perícias judiciais e consultoria especializada com rigor técnico e respaldo jurídico em São Mateus do Sul e região. Sua segurança patrimonial começa aqui."
                 speed={18}
@@ -50,9 +50,9 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
             </p>
 
             <FadeIn delay={900} duration={1000}>
-              <div className="mb-6 liquid-glass max-w-lg rounded-r-xl border-l-[3px] border-l-[#C9973A] px-4 py-3 text-left">
-                <p className="text-xs md:text-sm text-white/80 leading-relaxed">
-                  O barato pode sair caro. Uma avaliação sem critério técnico pode resultar em vendas abaixo do valor real, laudos contestados e perda irreversível de patrimônio. A imparcialidade e a precisão técnica são o único caminho para decisões seguras.
+              <div className="mb-6 liquid-glass max-w-lg rounded-r-xl border-l-[3px] border-l-[#C9973A] px-4 py-3 text-left overflow-hidden">
+                <p className="text-[10px] sm:text-xs md:text-sm text-white/80 leading-relaxed whitespace-nowrap">
+                  Perícia e avaliação com fundamentação ABNT.
                 </p>
               </div>
             </FadeIn>
@@ -81,7 +81,7 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
           <div className="mt-8 flex lg:mt-0 lg:col-span-4 justify-end items-end">
             <FadeIn delay={1400} duration={1000}>
               <div className="text-right">
-                <p className="text-sm md:text-base lg:text-lg font-light italic text-white/90 leading-relaxed max-w-[300px]">
+                <p className="text-sm md:text-base lg:text-lg font-light italic text-white/90 leading-relaxed max-w-[350px]">
                   Não basta avaliar; é preciso fundamentar.<br />
                   A excelência técnica é o melhor caminho para a segurança jurídica.
                 </p>

@@ -60,7 +60,7 @@ const Contact: React.FC = () => {
                 rel="noopener noreferrer"
                 className="mt-1 block font-display text-fluid-lg text-cream transition-colors hover:text-accent"
               >
-                Rosoha Perícia &amp; Imóveis
+                Vinícius Rosoha Pereira - Perícias e Consultoria Imobiliária
               </a>
             </div>
             <div>

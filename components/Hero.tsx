@@ -21,10 +21,10 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
 
       {/* Conteúdo */}
       <div className="relative z-10 flex flex-1 flex-col justify-end px-6 pb-12 md:px-12 lg:px-16 lg:pb-16">
-        <div className="lg:grid lg:grid-cols-2 lg:items-end">
+        <div className="lg:grid lg:grid-cols-12 lg:items-end lg:gap-8">
           {/* Coluna esquerda */}
-          <div className="text-left items-start flex flex-col justify-center">
-            <h1 className="mb-3 font-normal text-white text-[4.5vw] sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl tracking-[-0.03em] whitespace-nowrap overflow-hidden w-full">
+          <div className="lg:col-span-8 text-left items-start flex flex-col justify-center">
+            <h1 className="mb-3 font-normal text-white text-[4.5vw] sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl tracking-[-0.03em] whitespace-nowrap overflow-hidden w-full">
               <TypewriterText 
                 text="Aliando rigor técnico à expertise jurídica."
                 speed={45}
@@ -77,7 +77,7 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
           </div>
 
           {/* Coluna direita */}
-          <div className="mt-8 flex lg:mt-0 justify-end items-end">
+          <div className="mt-8 flex lg:mt-0 lg:col-span-4 justify-end items-end">
             <FadeIn delay={1400} duration={1000}>
               <div className="text-right">
                 <p className="text-sm md:text-base lg:text-lg font-light italic text-white/90 leading-relaxed max-w-[300px]">

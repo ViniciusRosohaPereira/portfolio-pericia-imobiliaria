@@ -25,7 +25,7 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
         <div className="lg:grid lg:grid-cols-12 lg:items-end lg:gap-8">
           {/* Coluna esquerda */}
           <div className="lg:col-span-8 text-left items-start flex flex-col justify-center">
-            <h1 className="mb-3 font-normal text-white text-[4.5vw] sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl tracking-[-0.03em] whitespace-nowrap overflow-hidden max-w-full">
+            <h1 className="mb-3 font-normal text-white text-[3.8vw] sm:text-[3vw] md:text-2xl lg:text-3xl xl:text-4xl tracking-[-0.03em] whitespace-nowrap overflow-hidden max-w-full">
               <TypewriterText 
                 text="Aliando rigor técnico à expertise jurídica."
                 speed={45}
@@ -33,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
               />
             </h1>
             
-            <p className="mb-4 text-xs sm:text-sm md:text-base lg:text-lg italic text-[#C9973A] whitespace-nowrap overflow-hidden max-w-full">
+            <p className="mb-4 text-[2.8vw] sm:text-xs md:text-sm lg:text-base xl:text-lg italic text-[#C9973A] whitespace-nowrap overflow-hidden max-w-full">
               <TypewriterText 
                 text="Precisão que protege. Imparcialidade que valoriza."
                 speed={35}
@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
               />
             </p>
 
-            <p className="mb-6 text-xs sm:text-sm md:text-base text-gray-200 max-w-lg text-left min-h-[80px]">
+            <p className="mb-6 text-[2.8vw] sm:text-xs md:text-sm lg:text-base text-gray-200 max-w-[90%] md:max-w-lg text-left min-h-[80px]">
               <TypewriterText 
                 text="Avaliações imobiliárias, perícias judiciais e consultoria especializada com rigor técnico e respaldo jurídico em São Mateus do Sul e região. Sua segurança patrimonial começa aqui."
                 speed={18}

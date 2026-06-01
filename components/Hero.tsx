@@ -12,12 +12,13 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
       {/* Vídeo de fundo */}
       <video
         className="absolute inset-0 z-0 h-full w-full object-cover"
-        src="/9923477-uhd_2562_1440_30fps.mp4"
         autoPlay
         loop
         muted
         playsInline
-      />
+      >
+        <source src="/9923477-uhd_2562_1440_30fps.mp4" type="video/mp4" />
+      </video>
 
       {/* Conteúdo */}
       <div className="relative z-10 flex flex-1 flex-col justify-end px-6 pb-12 md:px-12 lg:px-16 lg:pb-16">

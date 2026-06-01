@@ -4,7 +4,7 @@ const MapEmbed: React.FC = () => {
   return (
     <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden rounded-2xl shadow-xl bg-black p-0">
       <video
-        src="/15408410_3840_2160_30fps.mp4"
+        src="/9923477-uhd_2562_1440_30fps.mp4"
         autoPlay
         loop
         muted
